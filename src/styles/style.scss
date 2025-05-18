@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    font-family: "Kanit", sans-serif;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+.header-item{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1{
+    font-weight: 500;
+  }
+}
+  .search-bar {
+    position: relative;
+    input {
+      width: 595px !important;
+      border: 1px solid rgb(56, 24, 198);
+      padding: 0.5rem 2rem 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+    }
+
+    .icon {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+    }
+  }
+
+  .controls {
+    display: flex;
+    gap: 0.5rem;
+
+    .filter
+    {
+      background-color: rgb(56, 24, 198);
+      border: none;
+      color: white;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .theme-toggle
+    {
+      width: 38px;
+      height: 38px;
+      background-color: rgb(56, 24, 198);
+      border: none;
+      color: white;
+      border-radius: 5px;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.task-card {
+  flex: 1 1 calc(33.333% - 1rem); // 3 в ряд на больших
+  max-width: 400px;
+  min-width: 260px;
+}
+
+.task-list{
+  .task:hover{
+    cursor: pointer;
+    .icon-button{
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
+  }
+  }
+  .empty{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    h2{
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+.task {
+  margin: 0 auto;
+  width: 70%;
+  background-color: transparent;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(138, 132, 132);
+
+  .title {
+    flex: 1;
+    margin-left: 0.75rem;
+    font-weight: bold;
+    font-size: 23px;
+  }
+
+  &.completed .title {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+
+  .icons {
+    display: flex;
+    gap: 0.5rem;
+    color: #666;
+    .icon-button{
+      opacity: 0;
+      border: none;
+      color: #CDCDCD;
+      background-color: transparent;
+    }
+    .icon-button:nth-child(1):hover{
+      color: rgb(56, 24, 198);
+    }
+    .icon-button:nth-child(2):hover{
+      color: rgb(224, 22, 15);
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+}
+
+.add-task-button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #7b61ff;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+h1 {
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  border: 1px solid rgb(56, 24, 198) ;
+  flex-direction: column;
+  gap: 1rem;
+    width: 100%;
+  max-width: 500px;
+  padding: 1.5rem;
+  h2{
+    margin: 0 auto;
+  }
+}
+
+.modal input
+ {
+  outline: none;
+  padding-left: 15px;
+  width: 96%;
+  height: 38px;
+  border-radius: 0.5rem;
+  border: 1px solid  rgb(56, 24, 198);
+  resize: none;
+}
+.modal input::placeholder{
+  padding-left: 15px;
+  font-size: 16px;
+  color: #C3C1E5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  .modal-buttons{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    button:nth-child(1){
+      cursor: pointer;
+      padding: 8px 20px;
+   font-size: 18px;
+   font-weight: 500;
+   border-radius: 5px;
+   background-color: transparent;
+   border: 1px solid rgb(56, 24, 198);
+   color: rgb(56, 24, 198);
+    }
+    button:nth-child(2){
+      cursor: pointer;
+      color: white;
+       padding: 8px 20px;
+       border: rgb(56, 24, 198);
+   font-size: 18px;
+   font-weight: 600;
+   border-radius: 5px;
+   background-color: rgb(56, 24, 198);;
+    }
+  }
+}
+.search-input {
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  display: block;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  &::placeholder {
+    color: #aaa;
+  }
+}
+.filter-dropdown {
+  position: relative;
+
+  .filter {
+    background: none;
+    border: 1px solid #666;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    color: rgb(56, 24, 198);
+    background: white;
+    border: 1px solid rgb(56, 24, 198);
+    border-radius: 6px;
+    margin-top: 4px;
+    z-index: 100;
+
+    .dropdown-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      &:hover {
+        background: rgb(184, 181, 198);
+      }
+    }
+  }
+}
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --input-bg: #f0f0f0;
+  --border-color: #ccc;
+      max-width: 750px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: sans-serif;
+  --accent-color: #5d4eff;
+}
+
+body.dark {
+    max-width: 750px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: sans-serif;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --input-bg: #1e1e1e;
+  --border-color: #333;
+  --accent-color: #a08aff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+input, .search-bar {
+  outline: none;
+  color: var(--text-color);
+}
+
+button, .theme-toggle {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, color 0.3s;
+  background-color: #ffffff;
+  color: #000000;
+
+  &.dark {
+    background-color: #1e1e1e;
+    color: #ffffff;
+      width: 750px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: sans-serif;
+  background-color: #f9f9f9;
+  height: 310px;
+  }
+}
+
+/* Инпут поиска */
+.search-input {
+  border: 2px solid #726eff;
+  padding: 8px;
+  border-radius: 8px;
+  color: inherit;
+  background-color: transparent;
+  transition: all 0.3s;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  .dark & {
+    background-color: #2a2a2a;
+    border-color: #fff;
+    color: #fff;
+  }
+}
+
+/* Кнопка фильтра */
+.filter {
+  background-color: #726eff;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  .dark & {
+    background-color: #726eff;
+    color: #fff;
+  }
+}
+
+/* Выпадающий список */
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+
+  .dark & {
+    background-color: #2a2a2a;
+    border-color: #444;
+    color: #fff;
+  }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+      .dark & {
+        background-color: #3a3a3a;
+      }
+    }
+  }
+}
+
+/* Иконки */
+.theme-toggle,
+.add-task-button {
+  background-color: #726eff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  .dark & {
+    background-color: #726eff;
+  }
+}
+
+/* Модалка */
+.modal {
+  background-color: #fff;
+  color: #000;
+
+  .dark & {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+
+  input {
+    border: 1px solid #ccc;
+
+    .dark & {
+      background-color: #3a3a3a;
+      color: #fff;
+      border-color: #555;
+    }
+  }
+}
+
+.theme-checkbox {
+  appearance: none;
+  background-color: transparent;
+  accent-color: #4228c7; 
+  background-color: white;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #7b61ff;
+  background-color: white;
+  cursor: pointer;
+border-radius: 2px;
+position: relative;
+
+  &:checked {
+    background-color: #7b61ff;
+  }
+  &:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .search-bar input {
+    width: 100%;
+        width: 100% !important;
+    border: 1px solid rgb(56, 24, 198);
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .task-card {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .modal {
+    width: 95%;
+    height: auto;
+    padding: 1rem;
+    top: 10%;
+  }
+
+  .add-task-button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-item h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  margin: 0;
+}
+
+.search-bar .icon {
+  position: absolute;
+  right: 10px;
+  color: var(--text-color);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter {
+  padding: 0.4rem 0.8rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  z-index: 10;
+  width: 100%;
+  min-width: 120px;
+}
+
+.dropdown-item {
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--hover-bg);
+  }
+}
+
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.task-card {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 250px;
+  max-width: 350px;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.add-task-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 90%;
+  max-width: 500px;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+:root {
+  --bg-color: #f2f2f2;
+  --text-color: #1a1a1a;
+  --card-bg: #fff;
+  --input-bg: #fff;
+  --border-color: #ccc;
+  --hover-bg: #eee;
+  --accent: #6366f1;
+}
+
+body.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #f9f9f9;
+  --card-bg: #2c2c2c;
+  --input-bg: #3a3a3a;
+  --border-color: #555;
+  --hover-bg: #444;
+  --accent: #4f46e5;
+}

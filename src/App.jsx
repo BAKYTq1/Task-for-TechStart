@@ -82,7 +82,6 @@ const filteredTasks = tasks.filter((task) => {
 
 
   return (
-    <div className="app">
     <div className={`light  ${darkMode ? "dark" : ""}`}>
     <Header
   searchTerm={searchTerm}
@@ -113,7 +112,6 @@ const filteredTasks = tasks.filter((task) => {
           task={editingTask}
         />
       )}
-    </div>
     </div>
   );
 }

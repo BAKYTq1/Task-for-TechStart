@@ -4,7 +4,7 @@ import { FiPlus } from "react-icons/fi";
 
 const AddTaskButton = ({onClick}) => {
   return (
-    <button className="add-task-button" onClick={onClick}>
+    <button className="add-task-button1" onClick={onClick}>
       <FiPlus size={24} />
     </button>
   );
